@@ -1,55 +1,55 @@
 # GitHub Users
 
-Android-клиент для GitHub API: список пользователей, профиль, репозитории
-пользователя и детали репозитория. Данные кешируются в локальной базе,
-поэтому приложение работает и без сети. Проект построен на классическом
-стеке MVP + RxJava + Dagger 2.
+An Android client for the GitHub API: a list of users, a user profile, the user's
+repositories and repository details. Data is cached in a local database,
+so the app also works without a network connection. The project is built on the classic
+MVP + RxJava + Dagger 2 stack.
 
-## Возможности
+## Features
 
-- Список пользователей GitHub с аватарами
-- Профиль пользователя и список его репозиториев
-- Детальная информация о репозитории
-- Офлайн-режим: пользователи, репозитории и аватары кешируются в Room
-  и на диск, источник выбирается по состоянию сети
-- Конвертер изображений: выбор картинки из галереи и сохранение в PNG
+- List of GitHub users with avatars
+- User profile and the list of their repositories
+- Repository details
+- Offline mode: users, repositories and avatars are cached in Room
+  and on disk, and the data source is chosen based on network state
+- Image converter: pick an image from the gallery and save it as PNG
 
-## Стек
+## Tech stack
 
-| Область        | Технологии                                       |
+| Area           | Technologies                                     |
 |----------------|--------------------------------------------------|
-| Язык           | Kotlin                                           |
-| Архитектура    | MVP (Moxy)                                       |
-| Навигация      | Cicerone                                         |
+| Language       | Kotlin                                           |
+| Architecture   | MVP (Moxy)                                       |
+| Navigation     | Cicerone                                         |
 | DI             | Dagger 2 (dagger-android)                        |
-| Асинхронность  | RxJava 2, RxKotlin, RxAndroid                    |
-| Сеть           | Retrofit, OkHttp, Gson                           |
-| Хранение       | Room (RxJava-адаптер)                            |
-| Изображения    | Glide                                            |
+| Concurrency    | RxJava 2, RxKotlin, RxAndroid                    |
+| Networking     | Retrofit, OkHttp, Gson                           |
+| Storage        | Room (RxJava adapter)                            |
+| Images         | Glide                                            |
 | UI             | ViewBinding, Material Components, RecyclerView   |
-| Логирование    | Timber                                           |
+| Logging        | Timber                                           |
 
-## Структура
+## Project structure
 
 ```
 app/src/main/java/com/tlenparty/popularlibraries/
-├── api/            # Retrofit-интерфейс GitHub API, интерсепторы
-├── baselogic/      # экраны: MainActivity, users, user, user_repositories
-├── converter/      # конвертер изображений
-├── di/             # Dagger-компонент и модули
-├── framework/ui/   # адаптеры, загрузка изображений
-├── helpers/        # сеть, планировщики Rx, экраны Cicerone
+├── api/            # Retrofit interface for the GitHub API, interceptors
+├── baselogic/      # screens: MainActivity, users, user, user_repositories
+├── converter/      # image converter
+├── di/             # Dagger component and modules
+├── framework/ui/   # adapters, image loading
+├── helpers/        # network, Rx schedulers, Cicerone screens
 ├── model/
-│   ├── db/         # Room: сущности, DAO, кеш
-│   ├── entites/    # модели API
+│   ├── db/         # Room: entities, DAOs, cache
+│   ├── entites/    # API models
 │   └── repositories/
-├── RxPlayground.kt     # песочница с примерами RxJava
-└── test_dagger/        # песочница с примерами Dagger
+├── RxPlayground.kt     # sandbox with RxJava examples
+└── test_dagger/        # sandbox with Dagger examples
 ```
 
-## Сборка
+## Build
 
-Требуется JDK 11–17 и Android SDK 31.
+Requires JDK 11–17 and Android SDK 31.
 
 ```bash
 ./gradlew assembleDebug
